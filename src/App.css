@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Fauna+One|Oxygen:400,300,700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
 * {
   box-sizing: border-box;
 }
@@ -16,18 +19,11 @@ img {
   vertical-align: middle;
 }
 
-.App {
-  font-family: Oxygen, Helvetica, Arial, sans-serif; }
-
 h1, h2, h3, h4, h5 {
 font-family: "Fauna One";
 font-weight: 400;
 color: #008BF8; }
 
-i.fa-trash-o {
-  cursor: pointer;
-  color: #ccc;
-  vertical-align: middle;
-  margin-left: 1em; }
-  i.fa-trash-o:hover {
-    color: #999; }
+.App {
+  font-family: Oxygen, Helvetica, Arial, sans-serif; }
+
