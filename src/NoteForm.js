@@ -71,7 +71,7 @@ class NoteForm extends Component {
                                 type="text" 
                                 name="title" 
                                 placeholder="Title your note" 
-                                value={(!this.props.isSelected) ? this.props.currentNote.title : this.state.note.title}
+                                value={(this.props.isSelected) ? this.props.currentNote.title : this.state.note.title}
                                 onChange={this.handleChanges} 
                             />
                         </p>
@@ -79,7 +79,7 @@ class NoteForm extends Component {
                             <textarea 
                                 name="body" 
                                 placeholder="Just start typing..." 
-                                value={(!this.props.isSelected) ? this.props.currentNote.body : this.state.note.body}
+                                value={(this.props.isSelected) ? this.props.currentNote.body : this.state.note.body}
                                 onChange={this.handleChanges}
                             ></textarea>
                         </p>
