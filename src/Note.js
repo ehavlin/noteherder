@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Note = ({ note }) => {
+const Note = (props) => {
     return (
-        <li onClick={note.noteSelected}>
-            <div className="note">
+        <li>
+            <div className="note" onClick={(event) => props.noteSelected(props.note)}>
                 <div className="note-title">
-                    {note.title}
+                    {props.note.title}
                 </div>
                 <div className="note-body">
                     <p>
-                        {note.body}
+                        {props.note.body}
                     </p>
                 </div>
             </div>

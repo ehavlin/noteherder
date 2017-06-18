@@ -8,6 +8,8 @@ class App extends Component {
 
     this.state = {
       notes: {},
+      currentNote: {},
+      isSelected: false,
     }
   }
 
@@ -20,21 +22,41 @@ class App extends Component {
     this.setState({ notes })
   }
 
-  noteSelected = (event) => {
-    event.preventDefault()
-    console.log("I was pressed")
+  noteSelected = (note) => {
+    const selectedNote = note
+    this.setState({ 
+      currentNote: note,
+      isSelected: true  
+    })
   }
 
   deleteNote = (note) => {
     let notes = {...this.state.notes}
     delete(notes[note.id])
     this.setState({notes})
+
+    this.clearNote()
+  }
+
+  clearNote = () => {
+    this.setState({ 
+      currentNote: {},
+      isSelected: false
+    })
   }
 
   render() {
     return (
       <div className="App">
-        <Main notes={this.state.notes} saveNote={this.saveNote} deleteNote={this.deleteNote}/>
+        <Main 
+          notes={this.state.notes}
+          currentNote={this.state.currentNote} 
+          isSelected={this.state.isSelected}
+          saveNote={this.saveNote} 
+          deleteNote={this.deleteNote} 
+          noteSelected={this.noteSelected}
+          clearNote={this.clearNote}
+        />
       </div>
     );
   }
