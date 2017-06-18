@@ -20,6 +20,14 @@
   font-size: 1.4rem;
   padding: 1rem;
 }
+.NoteForm button[type="button"] {
+  background-color: orangered;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.4rem;
+  padding: 1rem;
+  margin-left: 5px;
+}
 .NoteForm button i.fa {
   color: #999;
   font-size: 2rem;
@@ -46,3 +54,10 @@ textarea {
   height: calc(100vh - 140px);
   font-size: 1.3em;
 }
+i.fa-trash-o {
+  cursor: pointer;
+  color: #ccc;
+  vertical-align: middle;
+  margin-left: 1em; }
+  i.fa-trash-o:hover {
+    color: #999; }

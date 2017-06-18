@@ -33,6 +33,13 @@ class NoteForm extends Component {
         this.setState({ note: this.blankNote() })
     }
 
+    deleteNote = (event) => {
+        event.preventDefault()
+        const note = {...this.state.note}
+        this.props.deleteNote(note)
+        this.setState({ note: this.blankNote() })
+    }
+
     render() {
         return (
                 <div className="NoteForm">
@@ -55,6 +62,7 @@ class NoteForm extends Component {
                             ></textarea>
                         </p>
                         <button type="submit">Save note</button>
+                        <button type="button" onClick={this.deleteNote}>Delete</button>
                     </form>
                 </div>
                 )
