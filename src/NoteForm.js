@@ -64,7 +64,6 @@ class NoteForm extends Component {
     render() {
         return (
                 <div className="NoteForm">
-                    {console.log(this.props.isSelected)}
                     <form onSubmit={this.handleSubmit}>
                         <p>
                             <input 
