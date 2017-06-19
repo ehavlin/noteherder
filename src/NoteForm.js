@@ -11,6 +11,13 @@ class NoteForm extends Component {
         }
     }
 
+    componentWillReceiveProps = (nextProps) => {
+        const newId = nextProps.currentNoteId
+        if (newId !== this.state.note.id){
+            this.setState({ note: nextProps.notes[newId] })
+        }
+    }
+
     blankNote = () => {
         return {
             id: null,
@@ -20,45 +27,24 @@ class NoteForm extends Component {
     }
 
     handleChanges = (event) => {
-        if (!this.props.isSelected) {
-            const note = {...this.state.note}
-            note[event.target.name] = event.target.value
-            this.setState(
-                { note }, 
-                () => this.props.saveNote(this.state.note)
-            )  
-        }
-        else {
-            const note = this.props.currentNote
-            note[event.target.name] = event.target.value
-            this.setState(
-                { note }, 
-                () => this.props.saveNote(this.state.note)
-            )  
-        }
-          
+        const note = {...this.state.note}
+        note[event.target.name] = event.target.value
+        this.setState(
+            { note }, 
+            () => this.props.saveNote(this.state.note)
+        )          
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-        this.setState(
-            { note: this.blankNote() },
-            () => this.props.clearNote()
-        )
-    }
+    handleSubmit = (ev) => {
+        ev.preventDefault()
+        this.setState({ note: this.blankNote() })
+  }
 
     deleteNote = (event) => {
         event.preventDefault()
-        if (!this.props.isSelected) {
-            const note = {...this.state.note}
-            this.props.deleteNote(note)
-            this.setState({ note: this.blankNote() })
-        }
-        else {
-            const note = this.props.currentNote
-            this.props.deleteNote(note)
-            this.setState({ note: this.blankNote() })
-        }
+        const note = {...this.state.note}
+        this.props.deleteNote(note)
+        this.setState({ note: this.blankNote() })
     }
 
     render() {
@@ -70,7 +56,7 @@ class NoteForm extends Component {
                                 type="text" 
                                 name="title" 
                                 placeholder="Title your note" 
-                                value={(this.props.isSelected) ? this.props.currentNote.title : this.state.note.title}
+                                value={this.state.note.title}
                                 onChange={this.handleChanges} 
                             />
                         </p>
@@ -78,7 +64,7 @@ class NoteForm extends Component {
                             <textarea 
                                 name="body" 
                                 placeholder="Just start typing..." 
-                                value={(this.props.isSelected) ? this.props.currentNote.body : this.state.note.body}
+                                value={this.state.note.body}
                                 onChange={this.handleChanges}
                             ></textarea>
                         </p>

@@ -1,19 +1,21 @@
 import React from 'react'
 
-const Note = (props) => {
+const Note = ({ note, noteSelected }) => {
     return (
-        <li>
-            <div className="note" onClick={(event) => props.noteSelected(props.note)}>
-                <div className="note-title">
-                    {props.note.title}
+        <a onClick={() => noteSelected(note.id)}>
+            <li>
+                <div className="note">
+                    <div className="note-title">
+                        {note.title}
+                    </div>
+                    <div className="note-body">
+                        <p>
+                            {note.body}
+                        </p>
+                    </div>
                 </div>
-                <div className="note-body">
-                    <p>
-                        {props.note.body}
-                    </p>
-                </div>
-            </div>
-        </li>
+            </li>
+        </a>
     )
 }
 

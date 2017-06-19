@@ -12,8 +12,7 @@ class App extends Component {
 
     this.state = {
       notes: {},
-      currentNote: {},
-      isSelected: false,
+      currentNoteId: null,
       uid: null,
     }
   }
@@ -43,34 +42,21 @@ class App extends Component {
   saveNote = (note) => {
     if (!note.id) {
       note.id = `note-${Date.now()}`
+      this.noteSelected(note.id)
     }
     const notes = {...this.state.notes}
     notes[note.id] = note
     this.setState({ notes })
   }
 
-  noteSelected = (note) => {
-    const selectedNote = note
-    this.setState({ 
-      currentNote: note,
-      isSelected: true  
-    })
+  noteSelected = (noteId) => {
+    this.setState({ currentNoteId: noteId })
   }
 
   deleteNote = (note) => {
     let notes = {...this.state.notes}
     notes[note.id] = null
-    //delete(notes[note.id])
     this.setState({ notes })
-
-    this.clearNote()
-  }
-
-  clearNote = () => {
-    this.setState({ 
-      currentNote: {},
-      isSelected: false
-    })
   }
 
   signIn = () => {
@@ -100,7 +86,6 @@ class App extends Component {
       saveNote: this.saveNote,
       deleteNote: this.deleteNote, 
       noteSelected: this.noteSelected,
-      clearNote: this.clearNote,
     }
 
     return (
@@ -108,8 +93,7 @@ class App extends Component {
         <SignOut signOut={this.signOut} />
         <Main 
           notes={this.state.notes}
-          currentNote={this.state.currentNote} 
-          isSelected={this.state.isSelected}
+          currentNoteId={this.state.currentNoteId} 
           {...actions}
          />
       </div>
