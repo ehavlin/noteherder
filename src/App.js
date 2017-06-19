@@ -19,7 +19,15 @@ class App extends Component {
   }
 
   componentWillMount() {
-   
+    auth.onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.authHandler(user)
+        } else {
+          this.setState({ uid: null })
+        }
+      }
+    )
   }
 
   syncNotes = () => {
@@ -64,7 +72,7 @@ class App extends Component {
     })
   }
 
-  signedIn = () => {
+  signIn = () => {
     return this.state.uid
   }
 
@@ -101,7 +109,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        { this.signedIn() ? this.renderMain() : <SignIn authHandler={this.authHandler} /> }
+        { this.signIn() ? this.renderMain() : <SignIn /> }
       </div>
     );
   }
