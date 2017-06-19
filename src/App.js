@@ -13,6 +13,7 @@ class App extends Component {
       notes: {},
       currentNote: {},
       isSelected: false,
+      uid: null,
     }
   }
 
@@ -24,10 +25,6 @@ class App extends Component {
         state: 'notes',
       }
     )
-  }
-
-  signedIn = () => {
-    return true
   }
 
   saveNote = (note) => {
@@ -62,10 +59,22 @@ class App extends Component {
     })
   }
 
+  signedIn = () => {
+    return this.state.uid
+  }
+
+  signOut = () => {
+    this.setState({ uid: null })
+  }
+
+  authHandler = (user) => {
+    this.setState({ uid: user.uid })
+  }
+
   renderMain = () => {
     return (
       <div>
-        <SignOut />
+        <SignOut setState={this.signOut} />
         <Main notes={this.state.notes} sveNote={this.saveNOte} />
       </div>
     )
@@ -74,7 +83,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        { this.signedIn() ? this.renderMain() : <SignIn /> }
+        { this.signedIn() ? this.renderMain() : <SignIn authHandler={this.authHandler} /> }
       </div>
     );
   }
