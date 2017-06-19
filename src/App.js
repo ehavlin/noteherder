@@ -18,7 +18,7 @@ class App extends Component {
     }
   }
 
-  componentWillMount(){
+  componentWillMount() {
    
   }
 
@@ -85,7 +85,15 @@ class App extends Component {
     return (
       <div>
         <SignOut signOut={this.signOut} />
-        <Main notes={this.state.notes} sveNote={this.saveNOte} />
+        <Main 
+          notes={this.state.notes}
+          currentNote={this.state.currentNote} 
+          isSelected={this.state.isSelected}
+          saveNote={this.saveNote} 
+          deleteNote={this.deleteNote} 
+          noteSelected={this.noteSelected}
+          clearNote={this.clearNote}
+         />
       </div>
     )
   }
