@@ -1,8 +1,10 @@
 .SignOut {
-  background-color: whitesmoke;
-  border-radius: 4px;
-  font-size: 1.4rem;
-  padding: 1rem;
-  margin-left: 5px;
-  float: right;
+  position: absolute;
+  bottom: 10px;
+}
+.SignOut button {
+  background-color: transparent;
+}
+.SignOut button i.fa {
+  font-size: 2rem;
 }
