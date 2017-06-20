@@ -35,15 +35,13 @@ class NoteForm extends Component {
         )          
     }
 
-    handleSubmit = (ev) => {
-        ev.preventDefault()
+    handleSubmit = (event) => {
+        event.preventDefault()
         this.setState({ note: this.blankNote() })
   }
 
     deleteNote = (event) => {
-        event.preventDefault()
-        const note = {...this.state.note}
-        this.props.deleteNote(note)
+        this.props.deleteNote(this.state.note)
         this.setState({ note: this.blankNote() })
     }
 
@@ -68,8 +66,7 @@ class NoteForm extends Component {
                                 onChange={this.handleChanges}
                             ></textarea>
                         </p>
-                        <button type="submit">Save note</button>
-                        <button type="button" onClick={this.deleteNote}>Delete</button>
+                        <button type="button" onClick={this.deleteNote}><i className="fa fa-trash-o"></i></button>
                     </form>
                 </div>
                 )

@@ -8,7 +8,7 @@ const SignOut = ({ signOut }) => {
       className="SignOut"
       onClick={signOut}
     >
-      Sign Out
+      <i className="fa fa-sign-out" aria-hidden="true"></i>
     </button>
   )
 }

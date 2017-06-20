@@ -81,11 +81,22 @@ class App extends Component {
       )  
   }
 
+  emptyForm = () => {
+    console.log('hello')
+    const note = {
+      id: null,
+      title: '',
+      body: '',
+    }
+    this.saveNote(note)
+  }
+
   renderMain = () => {
     const actions = {
       saveNote: this.saveNote,
       deleteNote: this.deleteNote, 
       noteSelected: this.noteSelected,
+      emptyForm: this.emptyForm,
     }
 
     return (
