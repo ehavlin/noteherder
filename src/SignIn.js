@@ -15,6 +15,8 @@ const SignIn = ({ authHandler }) => {
 
     return (
         <div className="signIn">
+            <h1>Noteherder</h1>
+            <h3>A note taking application</h3>
             <button 
                 className="SignInGithub"
                 onClick={authenticateGithub}
