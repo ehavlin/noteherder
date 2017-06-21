@@ -84,7 +84,7 @@ class App extends Component {
     )
   }
 
-  signIn = () => {
+  signedIn = () => {
     return this.state.uid
   }
 
@@ -133,22 +133,22 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route path="/notes" render={() => (
-            this.signIn()
-              ? <Main 
+            this.signedIn()
+              ? <Main
                   {...noteData}
                   {...actions}
                 />
               : <Redirect to="/sign-in" />
-          )}/>
+          )} />
           <Route path="/sign-in" render={() => (
-            !this.signIn()
+            !this.signedIn()
               ? <SignIn />
               : <Redirect to="/notes" />
           )} />
-          <Route render={() => <Redirect to="/notes" />}/>
+          <Route render={() => <Redirect to="/notes" />} />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
