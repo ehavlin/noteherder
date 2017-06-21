@@ -101,16 +101,6 @@ class App extends Component {
     this.setState({ currentNote: note })
   }
 
-  renderMain = () => {
-    
-
-    return (
-      <div>
-        
-      </div>
-    )
-  }
-
   render() {
     const actions = {
       saveNote: this.saveNote,
@@ -124,7 +114,7 @@ class App extends Component {
       notes: this.state.notes,
       currentNote: this.state.currentNote,
     }
-    
+
     return (
       <div className="App">
         <Switch>
@@ -137,7 +127,6 @@ class App extends Component {
           <Route path="/sign-in" component={SignIn} />
           <Route render={() => <Redirect to="/notes" />}/>
         </Switch>
-        {/*{ this.signIn() ? this.renderMain() : <SignIn /> }*/}
       </div>
     );
   }
