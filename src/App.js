@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.getUserFromLocalStorage
+    this.getUserFromLocalStorage()
     auth.onAuthStateChanged(
       (user) => {
         if (user) {
